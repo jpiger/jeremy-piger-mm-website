@@ -13,7 +13,7 @@ comments: true
 </center>
 
 
-Probability that the U.S. Economy was in Recession in December 2022: **4.5%**
+Probability that the U.S. Economy was in Recession in December 2022: **4.96%**
 
 
 For a time series of smoothed recession probabilities from June 1967 through December 2022, select one of the following: 
