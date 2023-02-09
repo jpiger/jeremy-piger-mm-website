@@ -24,4 +24,4 @@ For a time series of smoothed recession probabilities from June 1967 through Dec
 
 [Fred Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
-Questions? See the [FAQ]({% link _pages/recession_probs_faq.md %})
+Questions? [See this FAQ.]({% link _pages/recession_probs_faq.md %})
