@@ -1,23 +1,15 @@
 ---
-layout: default
-title: U.S. Recession Probabilities
+title:  ""
+layout: archive
+permalink: /recession_probs_faq/
+author_profile: true
+comments: true
 ---
 
-<h1>{{"Smoothed U.S. Recession Probabilities"}}</h1>
-
-<h3>{{"Release Date: January 27, 2023"}}</h3>
-
-<h3>{{"Most Recent Probability Available: December 2022"}}</h3>
-
-<h4>{{"For a time series of smoothed probabilities back to June 1967, select one of the following:"}}</h4> 
-
-<a href="/jpiger/us_historical_probs_1_27_23.pdf"> Figure</a>
-
-<a href="/jpiger/us_historical_probs_1_27_23.xlsx"> Excel File</a>
-
-<a href="https://fred.stlouisfed.org/series/RECPROUSM156N"> FRED Database</a>
-
-<h1>{{"Frequently Asked Questions:"}}</h1>
+<center>
+<h3>Real-Time U.S. Recession Probabilities</h3>
+<b>Frequently Asked Questions</b>
+</center>
 
 <b>1) When are the recession probabilities updated?</b>
 
