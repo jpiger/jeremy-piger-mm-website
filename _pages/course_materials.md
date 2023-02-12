@@ -7,4 +7,8 @@ comments: true
 ---
 <center>
 
-<h3>Course Materials</h3>
+<h2>Course Materials</h2>
+
+</center>
+
+[**Bayesian Econometrics**]({%link _pages/bayesian_econometrics.md%})
