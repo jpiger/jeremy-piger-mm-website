@@ -1,6 +1,7 @@
 ---
 title:  ""
-layout: archive
+layout: single
+classes: wide
 permalink: /recession_probs_faq/
 author_profile: true
 comments: true
@@ -10,6 +11,8 @@ comments: true
 <h3>Real-Time U.S. Recession Probabilities</h3>
 <b>Frequently Asked Questions</b>
 </center>
+
+<br>
 
 <b>1) When are the recession probabilities updated?</b>
 

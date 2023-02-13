@@ -1,6 +1,7 @@
 ---
 title:  ""
-layout: archive
+layout: single
+classes: wide
 permalink: /bayesian_econometrics/
 author_profile: true
 comments: true

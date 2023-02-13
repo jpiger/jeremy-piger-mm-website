@@ -1,6 +1,7 @@
 ---
 title:  ""
-layout: archive
+layout: single
+classes: wide
 permalink: /working_papers/
 author_profile: true
 comments: true

@@ -1,6 +1,7 @@
 ---
 title:  ""
-layout: archive
+layout: single
+classes: wide
 permalink: /published_forthcoming_papers/
 author_profile: true
 comments: true
