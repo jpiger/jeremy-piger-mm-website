@@ -106,8 +106,8 @@ analytics:
 author:
   name             : "Jeremy Piger"
   avatar           : /assets/images/Piger_Picture_small.jpg
-  bio              : "Professor of Economics at the University of Oregon"
-  location         : "Somewhere"
+  bio              : "Professor of Economics"
+  location         : "University of Oregon"
   email            :
   links:
     - label: "Email"
