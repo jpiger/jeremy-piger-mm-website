@@ -16,5 +16,7 @@ main:
     url: /course_materials/
   - title: "U.S. Recession Probabilities"
     url: /recession_probs/
+  - title: "About"
+    url: /about/
   #- title: "Sitemap"
   #  url: /sitemap/
