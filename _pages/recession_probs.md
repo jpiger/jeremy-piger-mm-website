@@ -15,7 +15,7 @@ comments: true
 
 <br>
 
-Probability that the U.S. Economy was in Recession in January 2023:  **0.9%**
+Probability that the U.S. Economy was in Recession in January 2023: **0.9%**
 
 
 For a time series of smoothed recession probabilities from June 1967 through December 2022, select one of the following: 
