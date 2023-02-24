@@ -13,8 +13,6 @@ comments: true
 
 </center>
 
-test
-
 Lecture notes and associated Matlab files for second year Ph.D. course taught at the University of Oregon. If you use/adapt this material in your own course, an acknowledgment somewhere in your syllabus or notes would be appreciated. I am not able to provide support for use of the Matlab code. 
 
 **Review of Important Probability Distributions**
