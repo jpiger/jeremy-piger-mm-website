@@ -18,5 +18,5 @@ main:
     url: /recession_probs/
   - title: "About"
     url: /about/
-  - title: "Sitemap"
-    url: /sitemap/
+  # - title: "Sitemap"
+  # url: /sitemap/
