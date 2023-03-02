@@ -8,7 +8,7 @@ comments: true
 ---
 <center>
 
-<h3>Real-Time U.S. Recession Probabilities</h3>
+<h3>U.S. Recession Probabilities</h3>
 <b>Release Date: February 24, 2023</b>
 
 </center>
