@@ -1,5 +1,5 @@
 ---
-title:  ""
+title:  "Published and Forthcoming Research"
 layout: single
 classes: wide
 permalink: /published_forthcoming_papers/

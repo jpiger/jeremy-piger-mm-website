@@ -1,5 +1,5 @@
 ---
-title:  ""
+title:  "Recession Probabilities"
 layout: single
 classes: wide
 permalink: /recession_probs/

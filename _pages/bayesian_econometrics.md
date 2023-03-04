@@ -1,5 +1,5 @@
 ---
-title:  ""
+title:  "Bayesian Econometrics"
 layout: single
 classes: wide
 permalink: /bayesian_econometrics/

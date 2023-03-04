@@ -1,5 +1,5 @@
 ---
-title:  ""
+title:  "Working Papers"
 layout: single
 classes: wide
 permalink: /working_papers/

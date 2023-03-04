@@ -1,5 +1,5 @@
 ---
-title:  ""
+title:  "Course Materials"
 layout: single
 classes: wide
 permalink: /course_materials/
