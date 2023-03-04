@@ -20,6 +20,8 @@ comments: true
 
 - [Google Scholar](https://scholar.google.com/citations?user=oLVUyHAAAAAJ&hl=en)
 
+- [ORCiD](https://orcid.org/my-orcid?orcid=0000-0001-6592-9986)
+
 - [Research Gate](https://www.researchgate.net/profile/Jeremy-Piger)
 
 - [IDEAS](https://ideas.repec.org/e/ppi14.html)
