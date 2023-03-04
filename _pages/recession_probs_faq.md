@@ -1,5 +1,5 @@
 ---
-title:  "Recession Probabilities FAQ"
+title:  "U.S. Recession Probabilities FAQ"
 layout: single
 classes: wide
 permalink: /recession_probs_faq/
@@ -7,12 +7,7 @@ author_profile: true
 comments: true
 ---
 
-<center>
-<h3>Real-Time U.S. Recession Probabilities</h3>
-<b>Frequently Asked Questions</b>
-</center>
-
-<br>
+<HR>
 
 <b>1) When are the recession probabilities updated?</b>
 

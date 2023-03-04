@@ -1,19 +1,15 @@
 ---
-title:  "Recession Probabilities"
+title:  "U.S. Recession Probabilities"
 layout: single
 classes: wide
 permalink: /recession_probs/
 author_profile: true
 comments: true
 ---
-<center>
 
-<h3>U.S. Recession Probabilities</h3>
+<HR>
+
 <b>Release Date: February 24, 2023</b>
-
-</center>
-
-<br>
 
 Probability that the U.S. Economy was in Recession in January 2023: **0.9%**
 
@@ -26,4 +22,4 @@ For a time series of smoothed recession probabilities from June 1967 through Dec
 
 [Fred Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
-Questions? [See this FAQ.]({% link _pages/recession_probs_faq.md %})
+Questions? [See the FAQ.]({% link _pages/recession_probs_faq.md %})
