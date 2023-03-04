@@ -16,12 +16,12 @@ comments: true
 
 [Working Papers]({% link _pages/working_papers.md %})
 
-***Metrics***
+***External Author Pages***
 
-- [Google Scholar Citations](https://scholar.google.com/citations?user=oLVUyHAAAAAJ&hl=en)
+- [Google Scholar](https://scholar.google.com/citations?user=oLVUyHAAAAAJ&hl=en)
 
-- [Research Gate Author Page](https://www.researchgate.net/profile/Jeremy-Piger)
+- [Research Gate](https://www.researchgate.net/profile/Jeremy-Piger)
 
-- [IDEAS Author Page](https://ideas.repec.org/e/ppi14.html)
+- [IDEAS](https://ideas.repec.org/e/ppi14.html)
 
-- [SSRN Author Page](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=249914)
+- [SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=249914)
