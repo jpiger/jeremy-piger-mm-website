@@ -6,11 +6,6 @@ permalink: /about/
 author_profile: true
 comments: true
 ---
-<center>
-
-<h2>About</h2>
-
-</center>
 
 I am a Professor of Economics at the University of Oregon. Prior to joining the faculty at Oregon, I spent five years as an Economist and Senior Economist at the Federal Reserve Bank of St. Louis, and one year as an Economist at the Federal Reserve Board of Governors.
 

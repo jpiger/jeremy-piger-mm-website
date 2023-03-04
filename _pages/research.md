@@ -6,11 +6,6 @@ permalink: /research/
 author_profile: true
 comments: true
 ---
-<center>
-
-<h3>Research</h3>
-
-</center>
 
 [Published and Forthcoming Papers]({% link _pages/published_forthcoming_papers.md %})
 

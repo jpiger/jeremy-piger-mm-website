@@ -1,16 +1,11 @@
 ---
-title:  "Published and Forthcoming Research"
+title:  "Published and Forthcoming Papers"
 layout: single
 classes: wide
 permalink: /published_forthcoming_papers/
 author_profile: true
 comments: true
 ---
-<center>
-
-<h2>Published and Forthcoming Papers</h2>
-
-</center>
 
 [**Contagious Switching**]({% link /assets/files/Owyang_Piger_Soquez_JAE_2021.pdf%}) <br>
 with Michael Owyang and Daniel Soquez <br>

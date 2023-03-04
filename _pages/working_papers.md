@@ -6,11 +6,6 @@ permalink: /working_papers/
 author_profile: true
 comments: true
 ---
-<center>
-
-<h3>Working Papers</h3>
-
-</center>
 
 [**Nowcasting Waterborne Commerce: A Bayesian Model Averaging Approach**]({% link /assets/files/wbc_bma_v13.pdf%}) <br>
 with Brett Garcia and Wesley Wilson

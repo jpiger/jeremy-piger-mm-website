@@ -6,11 +6,6 @@ permalink: /course_materials/
 author_profile: true
 comments: true
 ---
-<center>
-
-<h2>Course Materials</h2>
-
-</center>
 
 ***Graduate Courses*** <br>
 
