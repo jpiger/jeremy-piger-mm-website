@@ -1,10 +1,11 @@
 ---
+title: "Welcome"
 layout: single
 classes: wide
 author_profile: true
 ---
 
-<h2> Welcome </h2>
+<HR>
 
 I am a Professor of Economics at the University of Oregon. My research focuses on Applied Macroeconomics, Time-Series Econometrics and Bayesian Econometrics. <br>
 
