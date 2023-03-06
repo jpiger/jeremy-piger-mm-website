@@ -112,22 +112,16 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:jpiger@uoregon.edu"
+      url: "mailto:jpiger@uoregon.edu"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/JPiger"
+      url: "https://jeremypiger.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/jpiger"
-    - label: "Scholar"
-      icon: "ai ai-google-scholar"
-      url: "https://scholar.google.com/citations?user=oLVUyHAAAAAJ&hl=en&oi=sra"
-    - label: "ORCID"
-      icon: "ai ai-orcid"
-      url: "https://orcid.org/my-orcid?orcid=0000-0001-6592-9986"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/JPiger"
 
 # Site Footer
 footer:
