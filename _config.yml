@@ -119,15 +119,15 @@ author:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/JPiger"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/jpiger"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+    - label: "Scholar"
+      icon: "ai ai-google-scholar"
+      url: "https://scholar.google.com/citations?user=oLVUyHAAAAAJ&hl=en&oi=sra"
+    - label: "ORCID"
+      icon: "ai ai-orcid"
+      url: "https://orcid.org/my-orcid?orcid=0000-0001-6592-9986"
 
 # Site Footer
 footer:
