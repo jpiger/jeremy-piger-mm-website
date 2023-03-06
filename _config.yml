@@ -108,7 +108,7 @@ author:
   avatar           : /assets/images/Piger_Picture_small.jpg
   bio              : "Professor of Economics at the University of Oregon"
   location         : "Eugene, Oregon, USA"
-  email            : "jpiger@uoregon.edu"
+  email            : 
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
