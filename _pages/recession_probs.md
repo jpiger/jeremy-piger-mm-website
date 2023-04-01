@@ -14,7 +14,7 @@ comments: true
 Probability that the U.S. Economy was in Recession in February 2023: **0.7%**
 
 
-For a time series of smoothed recession probabilities from June 1967 through December 2022, select one of the following: 
+For a time series of smoothed recession probabilities from June 1967 through February 2023, select one of the following: 
 
 [Graph]({% link /assets/files/us_historical_probs_3_31_23.pdf %})
 
