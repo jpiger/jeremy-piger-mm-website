@@ -9,16 +9,16 @@ comments: true
 
 <HR>
 
-<b>Release Date: April 28, 2023</b>
+<b>Release Date: May 26, 2023</b>
 
-Probability that the U.S. Economy was in Recession in March 2023: **0.7%**
+Probability that the U.S. Economy was in Recession in April 2023: **0.4%**
 
 
-For a time series of smoothed recession probabilities from June 1967 through February 2023, select one of the following: 
+For a time series of smoothed recession probabilities from June 1967 through April 2023, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_4_28_23.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_5_26_23.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_4_28_23.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_5_26_23.xlsx %})
 
 [Fred Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
