@@ -11,7 +11,6 @@ comments: true
 
 <b>Release Date: July 28, 2023</b>
 
-
 Probability that the U.S. Economy was in Recession in June 2023: **1.5%**
 
 
