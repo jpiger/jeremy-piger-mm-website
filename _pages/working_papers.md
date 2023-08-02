@@ -9,6 +9,9 @@ comments: true
 
 <HR>
 
+[**Differences from Differencing: Should Local Projections with Observed Shocks be Estimated in Levels or Differences?**]({% link /assets/files/LP_Differencing_current.pdf%}) <br>
+with Thomas Stockwell
+
 [**Nowcasting Waterborne Commerce: A Bayesian Model Averaging Approach**]({% link /assets/files/wbc_bma_v13.pdf%}) <br>
 with Brett Garcia and Wesley Wilson
 
