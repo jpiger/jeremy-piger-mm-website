@@ -9,16 +9,16 @@ comments: true
 
 <HR>
 
-<b>Release Date: July 28, 2023</b>
+<b>Release Date: August 31, 2023</b>
 
-Probability that the U.S. Economy was in Recession in June 2023: **1.5%**
+Probability that the U.S. Economy was in Recession in July 2023: **0.8%**
 
 
-For a time series of smoothed recession probabilities from June 1967 through June 2023, select one of the following: 
+For a time series of smoothed recession probabilities from June 1967 through July 2023, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_7_28_23.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_8_31_23.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_7_28_23.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_8_31_23.xlsx %})
 
 [Fred Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
