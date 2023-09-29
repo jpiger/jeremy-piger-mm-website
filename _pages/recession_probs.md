@@ -9,7 +9,7 @@ comments: true
 
 <HR>
 
-<b>Release Date: Septemeber 29, 2023</b>
+<b>Release Date: September 29, 2023</b>
 
 Probability that the U.S. Economy was in Recession in August 2023: **0.2%**
 
