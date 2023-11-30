@@ -20,6 +20,6 @@ For a time series of smoothed recession probabilities from June 1967 through Jul
 
 [Excel File]({% link /assets/files/us_historical_probs_11_30_23.xlsx %})
 
-[Fred Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
+[FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
 Questions? [See the FAQ.]({% link _pages/recession_probs_faq.md %})
