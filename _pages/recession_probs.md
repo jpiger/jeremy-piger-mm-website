@@ -9,9 +9,9 @@ comments: true
 
 <HR>
 
-<b>Release Date: November 30, 2023</b>
+<b>Release Date: December 22, 2023</b>
 
-Probability that the U.S. Economy was in Recession in September 2023: **0.8%**
+Probability that the U.S. Economy was in Recession in November 2023: **0.8%**
 
 
 For a time series of smoothed recession probabilities from June 1967 through July 2023, select one of the following: 
