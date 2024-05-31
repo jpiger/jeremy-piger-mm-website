@@ -9,7 +9,7 @@ comments: true
 
 <HR>
 
-<b>Release Date: April 26, 2024</b>
+<b>Release Date: May 31, 2024</b>
 
 Probability that the U.S. Economy was in Recession in March 2024: **0.9%**
 
