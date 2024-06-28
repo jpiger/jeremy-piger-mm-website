@@ -9,9 +9,9 @@ comments: true
 
 <HR>
 
-<b>Release Date: May 31, 2024</b>
+<b>Release Date: June 28, 2024</b>
 
-Probability that the U.S. Economy was in Recession in April 2024: **0.9%**
+Probability that the U.S. Economy was in Recession in April 2024: **0.3%**
 
 
 For a time series of smoothed recession probabilities from June 1967 through July 2023, select one of the following: 
