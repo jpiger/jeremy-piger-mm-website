@@ -9,16 +9,16 @@ comments: true
 
 <HR>
 
-<b>Release Date: June 28, 2024</b>
+<b>Release Date: July 26, 2024</b>
 
-Probability that the U.S. Economy was in Recession in May 2024: **0.3%**
+Probability that the U.S. Economy was in Recession in June 2024: **0.2%**
 
 
-For a time series of smoothed recession probabilities from June 1967 through July 2023, select one of the following: 
+For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_6_28_24.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_7_26_24.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_6_28_24.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_7_26_24.xlsx %})
 
 [FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
