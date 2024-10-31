@@ -9,16 +9,16 @@ comments: true
 
 <HR>
 
-<b>Release Date: September 27, 2024</b>
+<b>Release Date: October 31, 2024</b>
 
-Probability that the U.S. Economy was in Recession in August 2024: **0.3%**
+Probability that the U.S. Economy was in Recession in September 2024: **1.0%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_9_27_24.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_10_31_24.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_9_27_24.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_10_31_24.xlsx %})
 
 [FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
