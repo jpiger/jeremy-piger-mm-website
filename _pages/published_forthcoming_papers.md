@@ -9,9 +9,9 @@ comments: true
 
 <HR>
 
-[**Are the Effects of Monetary Policy Larger in Recessions? A Reconciliation of the Evidence**]({% link /assets/files/AsymmetryRevisited_Current.pdf%}) <br>
+[**Are the Effects of Monetary Policy Larger in Recessions? A Reconciliation of the Evidence**]({% link /assets/files/Piger_Stockwell_JEA_2025_.pdf%}) <br>
 with Thomas Stockwell <br>
-*The Journal of Economic Asymmetries*, in press. 
+*The Journal of Economic Asymmetries*, 2025, v. 31. 
 
 [**Contagious Switching**]({% link /assets/files/Owyang_Piger_Soquez_JAE_2021.pdf%}) <br>
 with Michael Owyang and Daniel Soquez <br>
