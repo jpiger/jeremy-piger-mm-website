@@ -9,7 +9,7 @@ comments: true
 
 <HR>
 
-[**Are the Effects of Monetary Policy Larger in Recessions? A Reconciliation of the Evidence**]({% link /assets/files/Piger_Stockwell_JEA_2025_.pdf%}) <br>
+[**Are the Effects of Monetary Policy Larger in Recessions? A Reconciliation of the Evidence**]({% link /assets/files/Piger_Stockwell_JEA_2025.pdf%}) <br>
 with Thomas Stockwell <br>
 *The Journal of Economic Asymmetries*, 2025, v. 31. 
 
