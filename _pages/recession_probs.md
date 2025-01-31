@@ -11,14 +11,14 @@ comments: true
 
 <b>Release Date: December 20, 2024</b>
 
-Probability that the U.S. Economy was in Recession in November 2024: **1.3%**
+Probability that the U.S. Economy was in Recession in December 2024: **0.1%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_12_20_24.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_1_31_25.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_12_20_24.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_1_31_25.xlsx %})
 
 [FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
