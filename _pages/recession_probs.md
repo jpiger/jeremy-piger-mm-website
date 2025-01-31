@@ -9,7 +9,7 @@ comments: true
 
 <HR>
 
-<b>Release Date: December 20, 2024</b>
+<b>Release Date: January 31, 2025</b>
 
 Probability that the U.S. Economy was in Recession in December 2024: **0.1%**
 
