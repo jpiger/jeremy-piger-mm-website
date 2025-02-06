@@ -9,8 +9,9 @@ comments: true
 
 <HR>
 
-[**Differences from Differencing: Should Local Projections with Observed Shocks be Estimated in Levels or Differences?**]({% link /assets/files/LP_Differencing_current.pdf%}) *New Version in February 2025* <br>
-with Thomas Stockwell
+[**Differences from Differencing: Should Local Projections with Observed Shocks be Estimated in Levels or Differences?**]({% link /assets/files/LP_Differencing_current.pdf%}) <br>
+with Thomas Stockwell  <br>
+*New Version in February 2025*
 
 <HR>
 *Resting Papers*
