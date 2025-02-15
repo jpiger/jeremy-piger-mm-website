@@ -122,6 +122,9 @@ author:
    # - label: "Twitter"
    #   icon: "fab fa-fw fa-twitter-square"
    #   url: "https://twitter.com/JPiger"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin-square"
+      url: "https://twitter.com/JPiger"
 
 # Site Footer
 footer:
