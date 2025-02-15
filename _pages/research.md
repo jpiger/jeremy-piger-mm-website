@@ -17,10 +17,10 @@ comments: true
 
 - [Google Scholar](https://scholar.google.com/citations?user=oLVUyHAAAAAJ&hl=en)
 
+- [SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=249914)
+
 - [ORCiD](https://orcid.org/my-orcid?orcid=0000-0001-6592-9986)
 
 - [Research Gate](https://www.researchgate.net/profile/Jeremy-Piger)
 
 - [IDEAS](https://ideas.repec.org/e/ppi14.html)
-
-- [SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=249914)
