@@ -19,7 +19,7 @@ comments: true
 
 - [SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=249914)
 
-- [ORCiD](https://orcid.org/my-orcid?orcid=0000-0001-6592-9986)
+- [ORCiD](https://orcid.org/0000-0001-6592-9986)
 
 - [Research Gate](https://www.researchgate.net/profile/Jeremy-Piger)
 
