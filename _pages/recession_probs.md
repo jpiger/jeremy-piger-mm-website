@@ -9,9 +9,9 @@ comments: true
 
 <HR>
 
-<b>Release Date: March 28, 2025</b>
+<b>Release Date: April 30, 2025</b>
 
-Probability that the U.S. Economy was in Recession in February 2025: **0.4%**
+Probability that the U.S. Economy was in Recession in March 2025: **0.8%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
