@@ -9,16 +9,16 @@ comments: true
 
 <HR>
 
-<b>Release Date: April 30, 2025</b>
+<b>Release Date: May 30, 2025</b>
 
-Probability that the U.S. Economy was in Recession in March 2025: **0.8%**
+Probability that the U.S. Economy was in Recession in April 2025: **0.01%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_4_30_25.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_5_30_25.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_4_30_25.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_5_30_25.xlsx %})
 
 [FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
