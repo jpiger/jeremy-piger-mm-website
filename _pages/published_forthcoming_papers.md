@@ -11,7 +11,7 @@ comments: true
 
 [**Differences from Differencing: Should Local Projections with Observed Shocks be Estimated in Levels or Differences?**]({% link /assets/files/LP_Differencing_current.pdf%}) <br>
 with Thomas Stockwell  <br>
-*Journal of Applied Econometrics*, in press.
+*Journal of Applied Econometrics*, in press. <br>
 [Replication Files](https://journaldata.zbw.eu/dataset/differences-from-differencing-replication-code-and-data) <br>
 
 [**Are the Effects of Monetary Policy Larger in Recessions? A Reconciliation of the Evidence**]({% link /assets/files/Piger_Stockwell_JEA_2025.pdf%}) <br>
