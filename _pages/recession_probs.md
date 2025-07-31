@@ -9,16 +9,16 @@ comments: true
 
 <HR>
 
-<b>Release Date: June 27, 2025</b>
+<b>Release Date: July 31, 2025</b>
 
-Probability that the U.S. Economy was in Recession in May 2025: **1.6%**
+Probability that the U.S. Economy was in Recession in June 2025: **0.6%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_6_27_25.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_7_31_25.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_6_27_25.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_7_31_25.xlsx %})
 
 [FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
