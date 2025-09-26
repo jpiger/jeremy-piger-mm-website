@@ -9,7 +9,7 @@ comments: true
 
 <HR>
 
-<b>Release Date: August 29, 2025</b>
+<b>Release Date: September 26, 2025</b>
 
 Probability that the U.S. Economy was in Recession in August 2025: **1.0%**
 
