@@ -11,7 +11,7 @@ comments: true
 
 <b>Release Date: September 26, 2025</b>
 
-<em><b>New releases of recession probabilities are on hold due to the Federal Government shutdown.</b></em> 
+<em><b>New releases of recession probabilities are delayed due to the Federal Government shutdown.</b></em> 
 
 Probability that the U.S. Economy was in Recession in August 2025: **1.0%**
 
