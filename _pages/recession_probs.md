@@ -9,18 +9,16 @@ comments: true
 
 <HR>
 
-<b>Release Date: September 26, 2025</b>
+<b>Release Date: December 29, 2025</b>
 
-<em><b>New releases of recession probabilities are delayed due to the Federal Government shutdown.</b></em> 
-
-Probability that the U.S. Economy was in Recession in August 2025: **1.0%**
+Probability that the U.S. Economy was in Recession in November 2025: **0.9%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_9_26_25.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_12_29_25.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_9_26_25.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_12_29_25.xlsx %})
 
 [FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
