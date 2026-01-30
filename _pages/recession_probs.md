@@ -9,16 +9,16 @@ comments: true
 
 <HR>
 
-<b>Release Date: December 29, 2025</b>
+<b>Release Date: January 30, 2026</b>
 
-Probability that the U.S. Economy was in Recession in November 2025: **0.9%**
+Probability that the U.S. Economy was in Recession in December 2025: **0.8%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_12_29_25.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_1_30_26.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_12_29_25.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_1_30_26.xlsx %})
 
 [FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
