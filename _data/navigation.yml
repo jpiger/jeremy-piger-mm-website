@@ -12,8 +12,8 @@ main:
     url: /assets/files/Vitae_Piger.pdf
   - title: "Research"
     url: /research/
-  - title: "Course Materials"
-    url: /course_materials/
+  #- title: "Course Materials"
+  #  url: /course_materials/
   - title: "U.S. Recession Probabilities"
     url: /recession_probs/
   - title: "About"
