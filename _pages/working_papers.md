@@ -11,7 +11,7 @@ comments: true
 
 [**Robust Identification of Business Cycle Turning Points**]({% link /assets/files/Quantile_MS.pdf%}) <br>
 
-Older "Resting" Papers <br>
+*Older "Resting" Papers* <br>
 
 [**Nowcasting Waterborne Commerce: A Bayesian Model Averaging Approach**]({% link /assets/files/wbc_bma_v13.pdf%}) <br>
 with Brett Garcia and Wesley Wilson
