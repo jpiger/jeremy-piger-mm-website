@@ -27,9 +27,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      overflow-y: auto;
       position: relative;
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
     }
 
     /* Starfield */
@@ -112,14 +112,14 @@
       letter-spacing: 0.3em;
       color: var(--gold-dim);
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
     .divider {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       opacity: 0.4;
     }
     .divider::before, .divider::after {
@@ -135,7 +135,7 @@
       background: linear-gradient(135deg, rgba(13,27,46,0.95) 0%, rgba(5,10,20,0.98) 100%);
       border: 1px solid rgba(255,215,0,0.15);
       border-radius: 4px;
-      padding: 2.25rem 2rem;
+      padding: 1.75rem 1.75rem;
       box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,215,0,0.1);
     }
 
@@ -143,12 +143,19 @@
       font-size: 0.82rem;
       color: rgba(201,214,232,0.7);
       line-height: 1.6;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.25rem;
       letter-spacing: 0.03em;
     }
 
-    .input-group {
+    /* Three inputs in a row */
+    .input-row {
+      display: flex;
+      gap: 0.75rem;
       margin-bottom: 1.1rem;
+    }
+
+    .input-group {
+      flex: 1;
       text-align: left;
     }
 
@@ -270,19 +277,19 @@
       computed from your Kalman filter.
     </p>
 
-    <div class="input-group">
-      <label for="p25">25th Percentile</label>
-      <input type="number" id="p25" placeholder="0.00" step="any"/>
-    </div>
-
-    <div class="input-group">
-      <label for="p50">50th Percentile (Median)</label>
-      <input type="number" id="p50" placeholder="0.00" step="any"/>
-    </div>
-
-    <div class="input-group">
-      <label for="p75">75th Percentile</label>
-      <input type="number" id="p75" placeholder="0.00" step="any"/>
+    <div class="input-row">
+      <div class="input-group">
+        <label for="p25">25th Pctile</label>
+        <input type="number" id="p25" placeholder="0.00" step="any"/>
+      </div>
+      <div class="input-group">
+        <label for="p50">50th Pctile</label>
+        <input type="number" id="p50" placeholder="0.00" step="any"/>
+      </div>
+      <div class="input-group">
+        <label for="p75">75th Pctile</label>
+        <input type="number" id="p75" placeholder="0.00" step="any"/>
+      </div>
     </div>
 
     <button onclick="checkSignal()">Transmit to Rebel Alliance</button>
@@ -365,7 +372,7 @@
       result.innerHTML = '<span class="result-icon">✨</span>' + SUCCESS_MESSAGE;
     } else {
       result.className = 'result visible failure';
-      result.innerHTML = '<span class="result-icon">🦹</span>' + randomFailure();
+      result.innerHTML = randomFailure();
     }
   }
 
