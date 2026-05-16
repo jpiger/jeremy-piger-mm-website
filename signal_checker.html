@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Force Checker</title>
+  <title>Rebel Alliance Signal Checker</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,6 +29,7 @@
       justify-content: center;
       overflow: hidden;
       position: relative;
+      padding: 2rem 1rem;
     }
 
     /* Starfield */
@@ -36,7 +37,6 @@
       position: fixed;
       inset: 0;
       z-index: 0;
-      background: transparent;
     }
     .stars::before, .stars::after {
       content: '';
@@ -63,7 +63,6 @@
         radial-gradient(1.5px 1.5px at 65% 30%, rgba(255,255,255,0.9) 0%, transparent 100%),
         radial-gradient(1px 1px at 45% 5%,  rgba(255,255,255,0.5) 0%, transparent 100%),
         radial-gradient(1px 1px at 2%  30%, rgba(255,255,255,0.7) 0%, transparent 100%);
-      background-size: 100% 100%;
       animation: twinkle 6s ease-in-out infinite alternate;
     }
     .stars::after {
@@ -85,22 +84,21 @@
       to   { opacity: 1; }
     }
 
-    /* Layout */
     .container {
       position: relative;
       z-index: 1;
-      width: min(480px, 92vw);
+      width: min(520px, 94vw);
       text-align: center;
     }
 
     .logo {
       font-family: 'Cinzel', serif;
       font-weight: 900;
-      font-size: clamp(1.8rem, 6vw, 3rem);
-      letter-spacing: 0.15em;
+      font-size: clamp(1.6rem, 5vw, 2.6rem);
+      letter-spacing: 0.12em;
       color: var(--gold);
       text-shadow: 0 0 20px rgba(255,215,0,0.5), 0 0 60px rgba(255,215,0,0.2);
-      margin-bottom: 0.2em;
+      margin-bottom: 0.25em;
       animation: glow-pulse 3s ease-in-out infinite;
     }
     @keyframes glow-pulse {
@@ -110,19 +108,18 @@
 
     .subtitle {
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.65rem, 2vw, 0.85rem);
-      letter-spacing: 0.35em;
+      font-size: clamp(0.6rem, 1.8vw, 0.78rem);
+      letter-spacing: 0.3em;
       color: var(--gold-dim);
       text-transform: uppercase;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
-    /* Divider */
     .divider {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       opacity: 0.4;
     }
     .divider::before, .divider::after {
@@ -132,29 +129,37 @@
       background: linear-gradient(to right, transparent, var(--gold));
     }
     .divider::after { background: linear-gradient(to left, transparent, var(--gold)); }
-    .divider-diamond {
-      width: 6px; height: 6px;
-      background: var(--gold);
-      transform: rotate(45deg);
-    }
+    .divider-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
 
-    /* Card */
     .card {
       background: linear-gradient(135deg, rgba(13,27,46,0.95) 0%, rgba(5,10,20,0.98) 100%);
       border: 1px solid rgba(255,215,0,0.15);
       border-radius: 4px;
-      padding: 2.5rem 2rem;
+      padding: 2.25rem 2rem;
       box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,215,0,0.1);
+    }
+
+    .instruction {
+      font-size: 0.82rem;
+      color: rgba(201,214,232,0.7);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      letter-spacing: 0.03em;
+    }
+
+    .input-group {
+      margin-bottom: 1.1rem;
+      text-align: left;
     }
 
     label {
       display: block;
       font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 0.25em;
       color: var(--gold-dim);
       text-transform: uppercase;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     input[type="number"] {
@@ -164,10 +169,10 @@
       border-radius: 2px;
       color: #fff;
       font-family: 'Raleway', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-weight: 300;
       text-align: center;
-      padding: 0.85rem 1rem;
+      padding: 0.75rem 1rem;
       outline: none;
       transition: border-color 0.3s, box-shadow 0.3s;
       letter-spacing: 0.1em;
@@ -182,14 +187,14 @@
     input[type="number"]::placeholder { color: rgba(255,255,255,0.2); }
 
     button {
-      margin-top: 1.5rem;
+      margin-top: 1.25rem;
       width: 100%;
       background: linear-gradient(135deg, #c9a800 0%, #ffd700 50%, #c9a800 100%);
       border: none;
       border-radius: 2px;
       color: #050a14;
       font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.3em;
       text-transform: uppercase;
@@ -205,11 +210,11 @@
     }
     button:active { transform: translateY(0); }
 
-    /* Result */
     .result {
-      margin-top: 1.75rem;
-      min-height: 5rem;
+      margin-top: 1.5rem;
+      min-height: 4.5rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 1.25rem;
@@ -218,16 +223,13 @@
       transform: translateY(8px);
       transition: opacity 0.4s ease, transform 0.4s ease;
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.85rem, 3vw, 1rem);
+      font-size: clamp(0.78rem, 2.5vw, 0.92rem);
       font-weight: 700;
-      letter-spacing: 0.05em;
-      line-height: 1.5;
+      letter-spacing: 0.04em;
+      line-height: 1.6;
       text-align: center;
     }
-    .result.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .result.visible { opacity: 1; transform: translateY(0); }
     .result.success {
       background: rgba(255,215,0,0.08);
       border: 1px solid rgba(255,215,0,0.3);
@@ -240,16 +242,11 @@
       color: #e74c3c;
       text-shadow: 0 0 20px rgba(192,57,43,0.4);
     }
-
-    .result-icon {
-      font-size: 1.6rem;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
+    .result-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
 
     .footer-text {
-      margin-top: 2rem;
-      font-size: 0.65rem;
+      margin-top: 1.75rem;
+      font-size: 0.6rem;
       letter-spacing: 0.2em;
       color: rgba(255,255,255,0.15);
       text-transform: uppercase;
@@ -261,51 +258,120 @@
 <div class="stars"></div>
 
 <div class="container">
-  <div class="logo">The Force Checker</div>
-  <div class="subtitle">A long time ago in a galaxy far, far away&hellip;</div>
+  <div class="logo">Rebel Alliance<br>Signal Checker</div>
+  <div class="subtitle">Decode the signal &mdash; Save the Galaxy</div>
 
   <div class="divider"><div class="divider-diamond"></div></div>
 
   <div class="card">
-    <label for="numInput">Enter Your Midichlorian Count</label>
-    <input type="number" id="numInput" placeholder="0.00" step="any"/>
+    <p class="instruction">
+      Enter the 25th, 50th, and 75th percentiles of<br>
+      <em>p</em>(signal<sub>T</sub> | message<sub>1</sub>, &hellip;, message<sub>T</sub>)<br>
+      computed from your Kalman filter.
+    </p>
 
-    <button onclick="checkForce()">Consult the Force</button>
+    <div class="input-group">
+      <label for="p25">25th Percentile</label>
+      <input type="number" id="p25" placeholder="0.00" step="any"/>
+    </div>
+
+    <div class="input-group">
+      <label for="p50">50th Percentile (Median)</label>
+      <input type="number" id="p50" placeholder="0.00" step="any"/>
+    </div>
+
+    <div class="input-group">
+      <label for="p75">75th Percentile</label>
+      <input type="number" id="p75" placeholder="0.00" step="any"/>
+    </div>
+
+    <button onclick="checkSignal()">Transmit to Rebel Alliance</button>
 
     <div class="result" id="result"></div>
   </div>
 
-  <div class="footer-text">jeremypiger.com</div>
+  <div class="footer-text">jeremypiger.com &mdash; EC 607</div>
 </div>
 
 <script>
-  function checkForce() {
-    const input = document.getElementById('numInput');
+  // -------------------------------------------------------
+  // PARAMETERS — easy to update
+  // -------------------------------------------------------
+  const CORRECT = {
+    p25: -2,   // correct 25th percentile
+    p50:  1,   // correct 50th percentile (median)
+    p75:  2    // correct 75th percentile
+  };
+  const TOLERANCE = 0.01;  // 1% tolerance: answer must be within ±(TOLERANCE * |correct|)
+  // -------------------------------------------------------
+
+  const SUCCESS_MESSAGE = "The Force is Strong with You!<br>Meet the Rebel Fleet at the secret Rebel base on Yavin 4.";
+
+  const FAILURE_MESSAGES = [
+    "Wow, did you have Jar Jar Binks construct that estimate?",
+    "Nice try, Darth Vader. Better luck next time.",
+    "Do or do not. There is no try. You did not.",
+    "Fear is the path to the dark side. Inaccurate Kalman Filter calculations can also get you there."
+  ];
+
+  function withinTolerance(entered, correct) {
+    const tol = Math.abs(correct) * TOLERANCE;
+    return Math.abs(entered - correct) <= tol;
+  }
+
+  function randomFailure() {
+    return FAILURE_MESSAGES[Math.floor(Math.random() * FAILURE_MESSAGES.length)];
+  }
+
+  function checkSignal() {
     const result = document.getElementById('result');
-    const val = parseFloat(input.value);
+    const inputs = {
+      p25: document.getElementById('p25').value.trim(),
+      p50: document.getElementById('p50').value.trim(),
+      p75: document.getElementById('p75').value.trim()
+    };
 
-    result.className = 'result';
-    result.innerHTML = '';
-
-    if (input.value.trim() === '' || isNaN(val)) {
-      result.classList.add('visible', 'failure');
-      result.innerHTML = '<span class="result-icon">⚠️</span>Please enter a valid number.';
+    // Validate all fields filled
+    if (inputs.p25 === '' || inputs.p50 === '' || inputs.p75 === '') {
+      result.className = 'result visible failure';
+      result.innerHTML = '<span class="result-icon">⚠️</span>Please enter all three percentiles.';
       return;
     }
 
-    void result.offsetWidth; // force reflow for re-animation
+    const vals = {
+      p25: parseFloat(inputs.p25),
+      p50: parseFloat(inputs.p50),
+      p75: parseFloat(inputs.p75)
+    };
 
-    if (val >= 2 && val <= 2.01) {
-      result.classList.add('visible', 'success');
-      result.innerHTML = '<span class="result-icon">✨</span>The Force is Strong with You!';
+    if (isNaN(vals.p25) || isNaN(vals.p50) || isNaN(vals.p75)) {
+      result.className = 'result visible failure';
+      result.innerHTML = '<span class="result-icon">⚠️</span>Please enter valid numbers.';
+      return;
+    }
+
+    // Reset for re-animation
+    result.className = 'result';
+    result.innerHTML = '';
+    void result.offsetWidth;
+
+    const allCorrect =
+      withinTolerance(vals.p25, CORRECT.p25) &&
+      withinTolerance(vals.p50, CORRECT.p50) &&
+      withinTolerance(vals.p75, CORRECT.p75);
+
+    if (allCorrect) {
+      result.className = 'result visible success';
+      result.innerHTML = '<span class="result-icon">✨</span>' + SUCCESS_MESSAGE;
     } else {
-      result.classList.add('visible', 'failure');
-      result.innerHTML = '<span class="result-icon">🦹</span>Nice Try Darth Vader!<br>Better Luck Next Time!';
+      result.className = 'result visible failure';
+      result.innerHTML = '<span class="result-icon">🦹</span>' + randomFailure();
     }
   }
 
-  document.getElementById('numInput').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') checkForce();
+  // Allow Enter key from any input
+  document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') checkSignal(); });
   });
 </script>
 
