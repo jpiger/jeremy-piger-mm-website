@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Force Checker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #FFD700;
+      --gold-dim: #b8960c;
+      --dark: #050a14;
+      --mid: #0d1b2e;
+      --light-text: #c9d6e8;
+      --red: #c0392b;
+      --red-bright: #ff4136;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light-text);
+      font-family: 'Raleway', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Starfield */
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: transparent;
+    }
+    .stars::before, .stars::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 75%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 40% 90%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 50%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  50%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 55% 70%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 15%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 95% 65%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 45%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 85%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 65% 30%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 5%,  rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 2%  30%, rgba(255,255,255,0.7) 0%, transparent 100%);
+      background-size: 100% 100%;
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 12% 55%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 33% 22%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 58% 88%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 77% 42%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 18%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 48% 62%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 8%,  rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 68% 48%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 72%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 8%  92%, rgba(255,255,255,0.5) 0%, transparent 100%);
+      animation-delay: 3s;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.6; }
+      to   { opacity: 1; }
+    }
+
+    /* Layout */
+    .container {
+      position: relative;
+      z-index: 1;
+      width: min(480px, 92vw);
+      text-align: center;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(255,215,0,0.5), 0 0 60px rgba(255,215,0,0.2);
+      margin-bottom: 0.2em;
+      animation: glow-pulse 3s ease-in-out infinite;
+    }
+    @keyframes glow-pulse {
+      0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.5), 0 0 60px rgba(255,215,0,0.2); }
+      50%       { text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 80px rgba(255,215,0,0.4); }
+    }
+
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.65rem, 2vw, 0.85rem);
+      letter-spacing: 0.35em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.4;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .divider::after { background: linear-gradient(to left, transparent, var(--gold)); }
+    .divider-diamond {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    /* Card */
+    .card {
+      background: linear-gradient(135deg, rgba(13,27,46,0.95) 0%, rgba(5,10,20,0.98) 100%);
+      border: 1px solid rgba(255,215,0,0.15);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,215,0,0.1);
+    }
+
+    label {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,215,0,0.25);
+      border-radius: 2px;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      text-align: center;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      letter-spacing: 0.1em;
+      -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+    input[type="number"]:focus {
+      border-color: rgba(255,215,0,0.6);
+      box-shadow: 0 0 20px rgba(255,215,0,0.1);
+    }
+    input[type="number"]::placeholder { color: rgba(255,255,255,0.2); }
+
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      background: linear-gradient(135deg, #c9a800 0%, #ffd700 50%, #c9a800 100%);
+      border: none;
+      border-radius: 2px;
+      color: #050a14;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 1rem;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(255,215,0,0.25);
+    }
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 30px rgba(255,215,0,0.4);
+    }
+    button:active { transform: translateY(0); }
+
+    /* Result */
+    .result {
+      margin-top: 1.75rem;
+      min-height: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      border-radius: 2px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.85rem, 3vw, 1rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .result.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .result.success {
+      background: rgba(255,215,0,0.08);
+      border: 1px solid rgba(255,215,0,0.3);
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(255,215,0,0.5);
+    }
+    .result.failure {
+      background: rgba(192,57,43,0.08);
+      border: 1px solid rgba(192,57,43,0.3);
+      color: #e74c3c;
+      text-shadow: 0 0 20px rgba(192,57,43,0.4);
+    }
+
+    .result-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-text {
+      margin-top: 2rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.15);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="container">
+  <div class="logo">The Force Checker</div>
+  <div class="subtitle">A long time ago in a galaxy far, far away&hellip;</div>
+
+  <div class="divider"><div class="divider-diamond"></div></div>
+
+  <div class="card">
+    <label for="numInput">Enter Your Midichlorian Count</label>
+    <input type="number" id="numInput" placeholder="0.00" step="any"/>
+
+    <button onclick="checkForce()">Consult the Force</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <div class="footer-text">jeremypiger.com</div>
+</div>
+
+<script>
+  function checkForce() {
+    const input = document.getElementById('numInput');
+    const result = document.getElementById('result');
+    const val = parseFloat(input.value);
+
+    result.className = 'result';
+    result.innerHTML = '';
+
+    if (input.value.trim() === '' || isNaN(val)) {
+      result.classList.add('visible', 'failure');
+      result.innerHTML = '<span class="result-icon">⚠️</span>Please enter a valid number.';
+      return;
+    }
+
+    void result.offsetWidth; // force reflow for re-animation
+
+    if (val >= 2 && val <= 2.01) {
+      result.classList.add('visible', 'success');
+      result.innerHTML = '<span class="result-icon">✨</span>The Force is Strong with You!';
+    } else {
+      result.classList.add('visible', 'failure');
+      result.innerHTML = '<span class="result-icon">🦹</span>Nice Try Darth Vader!<br>Better Luck Next Time!';
+    }
+  }
+
+  document.getElementById('numInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkForce();
+  });
+</script>
+
+</body>
+</html>
