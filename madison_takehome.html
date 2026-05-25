@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Madison, WI Take-Home Pay Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #4a4a52;
+    --ink-3: #8a8a96;
+    --surface: #fafaf8;
+    --card: #ffffff;
+    --border: #e4e4de;
+    --accent: #1d4f2e;
+    --accent-light: #e8f3ec;
+    --accent-mid: #2d7a46;
+    --warn: #92400e;
+    --warn-bg: #fef3c7;
+    --teal: #0f5f6e;
+    --teal-light: #e0f2f7;
+    --red: #991b1b;
+    --red-bg: #fef2f2;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    --radius: 12px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* Header */
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.03) 40px,
+      rgba(255,255,255,0.03) 80px
+    );
+  }
+  .header-inner { position: relative; max-width: 680px; margin: 0 auto; }
+  .state-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    margin-bottom: 1rem;
+  }
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+  }
+  header p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.78);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Layout */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 680px) {
+    main { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.75rem;
+  }
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title .icon {
+    width: 28px; height: 28px;
+    background: var(--accent-light);
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .card-title .icon svg { width: 15px; height: 15px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Form */
+  .field { margin-bottom: 1.1rem; }
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    margin-bottom: 5px;
+  }
+  .hint { font-size: 11.5px; color: var(--ink-3); margin-top: 3px; }
+
+  input[type="number"], select {
+    width: 100%;
+    padding: 9px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.18s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  input[type="number"]:focus, select:focus {
+    border-color: var(--accent-mid);
+    box-shadow: 0 0 0 3px rgba(45,122,70,0.12);
+  }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%238a8a96' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+
+  .input-prefix {
+    position: relative;
+  }
+  .input-prefix span {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--ink-3);
+    pointer-events: none;
+  }
+  .input-prefix input { padding-left: 24px; }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .toggle-label { font-size: 13px; font-weight: 500; color: var(--ink-2); }
+
+  /* Toggle switch */
+  .toggle {
+    position: relative;
+    width: 40px; height: 22px;
+    flex-shrink: 0;
+  }
+  .toggle input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider {
+    position: absolute; inset: 0;
+    background: #d1d5db;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    left: 3px; top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+  }
+  .toggle input:checked + .toggle-slider { background: var(--accent-mid); }
+  .toggle input:checked + .toggle-slider::before { transform: translateX(18px); }
+
+  .calc-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    margin-top: 1.25rem;
+    transition: background 0.18s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+  .calc-btn:hover { background: var(--accent-mid); }
+  .calc-btn:active { transform: scale(0.98); }
+
+  /* Results */
+  .results-col { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  #results-panel { display: none; flex-direction: column; gap: 1rem; }
+  #results-panel.visible { display: flex; }
+
+  .takehome-hero {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: var(--accent-light);
+    border: 1px solid rgba(45,122,70,0.2);
+    border-radius: 10px;
+  }
+  .takehome-label { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .takehome-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.6rem;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+  .takehome-period { font-size: 13px; color: var(--accent-mid); margin-top: 4px; }
+
+  .period-tabs {
+    display: flex; gap: 6px; margin-top: 10px; justify-content: center;
+  }
+  .period-tabs button {
+    padding: 5px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid rgba(45,122,70,0.3);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--accent-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .period-tabs button.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  .breakdown-list { list-style: none; }
+  .breakdown-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .breakdown-list li:last-child { border-bottom: none; }
+  .breakdown-list .item-label { color: var(--ink-2); }
+  .breakdown-list .item-val { font-weight: 500; }
+  .breakdown-list .item-val.deduction { color: var(--red); }
+  .breakdown-list .item-val.total { color: var(--accent); font-size: 15px; }
+  .breakdown-list .item-label.section-head {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding-top: 12px;
+  }
+  .breakdown-list li.section-row { border-bottom: none; }
+
+  .bar-wrap { margin: 0.5rem 0 0; }
+  .bar-track { height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; margin-top: 6px; }
+  .bar-fill { height: 100%; border-radius: 999px; transition: width 0.5s ease; }
+  .bar-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-3); }
+
+  .stacked-bar {
+    display: flex;
+    height: 22px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0.75rem 0 0.5rem;
+    gap: 2px;
+  }
+  .stacked-seg { height: 100%; transition: width 0.5s ease; }
+  .stacked-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .legend-dot {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 12px; color: var(--ink-2);
+  }
+  .legend-dot span {
+    width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0;
+  }
+
+  .info-note {
+    font-size: 12px;
+    color: var(--ink-3);
+    background: #f8f8f5;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    line-height: 1.5;
+  }
+  .info-note strong { color: var(--ink-2); }
+
+  .empty-state {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--ink-3);
+  }
+  .empty-state svg { width: 40px; height: 40px; margin-bottom: 0.75rem; stroke: var(--border); fill: none; stroke-width: 1.5; }
+  .empty-state p { font-size: 14px; }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--ink-3);
+    border-top: 1px solid var(--border);
+    background: var(--card);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="state-badge">Madison, Wisconsin</div>
+    <h1>Take-Home Pay Calculator</h1>
+    <p>Enter your salary and personal details to estimate your net pay after federal, state, and local taxes.</p>
+  </div>
+</header>
+
+<main>
+  <!-- Input Column -->
+  <div>
+    <div class="card">
+      <div class="card-title">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        Income &amp; Filing
+      </div>
+
+      <div class="field">
+        <label for="salary">Annual Gross Salary</label>
+        <div class="input-prefix">
+          <span>$</span>
+          <input type="number" id="salary" min="0" step="1000" placeholder="75,000" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="pay-freq">Pay Frequency</label>
+        <select id="pay-freq">
+          <option value="52">Weekly (52×/yr)</option>
+          <option value="26">Bi-weekly (26×/yr)</option>
+          <option value="24">Semi-monthly (24×/yr)</option>
+          <option value="12" selected>Monthly (12×/yr)</option>
+          <option value="1">Annual (lump sum)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="filing">Federal Filing Status</label>
+        <select id="filing">
+          <option value="single">Single</option>
+          <option value="mfj">Married Filing Jointly</option>
+          <option value="mfs">Married Filing Separately</option>
+          <option value="hoh">Head of Household</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="allowances">Federal Withholding Allowances (W-4)</label>
+        <input type="number" id="allowances" min="0" max="20" step="1" placeholder="0" value="0" />
+        <div class="hint">Each allowance reduces taxable income by $4,300/yr</div>
+      </div>
+
+      <div class="card-title" style="margin-top:1.25rem;">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </div>
+        Pre-Tax Deductions
+      </div>
+
+      <div class="field">
+        <label for="retirement">401(k) / 403(b) Contribution</label>
+        <select id="retirement-type" style="margin-bottom:6px;">
+          <option value="pct">Percentage of salary</option>
+          <option value="flat">Flat dollar amount / year</option>
+        </select>
+        <div class="input-prefix">
+          <span id="ret-prefix">%</span>
+          <input type="number" id="retirement" min="0" step="0.5" placeholder="0" value="0" />
+        </div>
+        <div class="hint">2024 IRS limit: $23,000 (under 50) / $30,500 (50+)</div>
+      </div>
+
+      <div class="field">
+        <label for="hsa">HSA Contribution (annual)</label>
+        <div class="input-prefix">
+          <span>$</span>
+          <input type="number" id="hsa" min="0" step="100" placeholder="0" value="0" />
+        </div>
+        <div class="hint">2024 limits: $4,150 individual / $8,300 family</div>
+      </div>
+
+      <div class="field">
+        <label for="other-pretax">Other Pre-Tax Deductions (annual)</label>
+        <div class="input-prefix">
+          <span>$</span>
+          <input type="number" id="other-pretax" min="0" step="100" placeholder="0" value="0" />
+        </div>
+        <div class="hint">Health/dental/vision premiums, FSA, etc.</div>
+      </div>
+
+      <div class="card-title" style="margin-top:1.25rem;">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        Personal Details
+      </div>
+
+      <div class="field">
+        <div class="toggle-row">
+          <span class="toggle-label">Age 65 or older?</span>
+          <label class="toggle"><input type="checkbox" id="age65" /><span class="toggle-slider"></span></label>
+        </div>
+        <div class="hint" style="margin-top:6px;">Affects standard deduction &amp; Medicare surtax threshold</div>
+      </div>
+
+      <div class="field">
+        <div class="toggle-row">
+          <span class="toggle-label">Self-employed?</span>
+          <label class="toggle"><input type="checkbox" id="self-employed" /><span class="toggle-slider"></span></label>
+        </div>
+        <div class="hint" style="margin-top:6px;">Adds self-employment tax (employer + employee FICA)</div>
+      </div>
+
+      <button class="calc-btn" onclick="calculate()">Calculate Take-Home Pay</button>
+    </div>
+  </div>
+
+  <!-- Results Column -->
+  <div class="results-col">
+    <div class="card" id="empty-card">
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        <p>Enter your salary and click <strong>Calculate</strong> to see your take-home pay.</p>
+      </div>
+    </div>
+
+    <div id="results-panel">
+
+      <div class="card">
+        <div class="card-title">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          Take-Home Pay
+        </div>
+
+        <div class="takehome-hero">
+          <div class="takehome-label">Estimated Net Pay</div>
+          <div class="takehome-amount" id="hero-amount">—</div>
+          <div class="takehome-period" id="hero-period">per month</div>
+          <div class="period-tabs">
+            <button class="active" onclick="setPeriod('pay')">Per Paycheck</button>
+            <button onclick="setPeriod('month')">Monthly</button>
+            <button onclick="setPeriod('year')">Annual</button>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <div class="bar-row"><span>Take-home</span><span id="eff-rate-label"></span></div>
+          <div class="stacked-bar" id="stacked-bar"></div>
+          <div class="stacked-legend" id="stacked-legend"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          Annual Breakdown
+        </div>
+        <ul class="breakdown-list" id="breakdown-list"></ul>
+      </div>
+
+      <div class="info-note">
+        <strong>Note:</strong> This calculator provides estimates for <strong>Madison, WI</strong> residents using 2024 tax rates. Wisconsin has no city income tax. Results are for informational purposes only and do not constitute tax advice. Consult a tax professional for your specific situation.
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  Tax rates reflect 2024 federal and Wisconsin state law. Wisconsin does not impose a local income tax.<br>
+  Estimates assume standard deductions unless pre-tax deductions are specified.
+</footer>
+
+<script>
+  // ---- Tax Rate Tables (2024) ----
+
+  const FEDERAL_BRACKETS = {
+    single: [
+      [0, 11600, 0.10],
+      [11600, 47150, 0.12],
+      [47150, 100525, 0.22],
+      [100525, 191950, 0.24],
+      [191950, 243725, 0.32],
+      [243725, 609350, 0.35],
+      [609350, Infinity, 0.37]
+    ],
+    mfj: [
+      [0, 23200, 0.10],
+      [23200, 94300, 0.12],
+      [94300, 201050, 0.22],
+      [201050, 383900, 0.24],
+      [383900, 487450, 0.32],
+      [487450, 731200, 0.35],
+      [731200, Infinity, 0.37]
+    ],
+    mfs: [
+      [0, 11600, 0.10],
+      [11600, 47150, 0.12],
+      [47150, 100525, 0.22],
+      [100525, 191950, 0.24],
+      [191950, 243725, 0.32],
+      [243725, 365600, 0.35],
+      [365600, Infinity, 0.37]
+    ],
+    hoh: [
+      [0, 16550, 0.10],
+      [16550, 63100, 0.12],
+      [63100, 100500, 0.22],
+      [100500, 191950, 0.24],
+      [191950, 243700, 0.32],
+      [243700, 609350, 0.35],
+      [609350, Infinity, 0.37]
+    ]
+  };
+
+  const STANDARD_DEDUCTION = {
+    single: 14600,
+    mfj: 29200,
+    mfs: 14600,
+    hoh: 21900
+  };
+  const EXTRA_DEDUCTION_65 = { single: 1950, mfj: 1550, mfs: 1550, hoh: 1950 };
+
+  // Wisconsin 2024 brackets (same brackets for single and MFJ differ only slightly; using standard tables)
+  const WI_BRACKETS = {
+    single: [
+      [0, 13810, 0.035],
+      [13810, 27630, 0.044],
+      [27630, 304170, 0.053],
+      [304170, Infinity, 0.0765]
+    ],
+    mfj: [
+      [0, 18420, 0.035],
+      [18420, 36840, 0.044],
+      [36840, 405550, 0.053],
+      [405550, Infinity, 0.0765]
+    ],
+    mfs: [
+      [0, 13810, 0.035],
+      [13810, 27630, 0.044],
+      [27630, 304170, 0.053],
+      [304170, Infinity, 0.0765]
+    ],
+    hoh: [
+      [0, 18420, 0.035],
+      [18420, 36840, 0.044],
+      [36840, 405550, 0.053],
+      [405550, Infinity, 0.0765]
+    ]
+  };
+
+  // Wisconsin standard deduction (2024, approximate)
+  const WI_STD_DEDUCTION = {
+    single: 12760,
+    mfj: 23730,
+    mfs: 11870,
+    hoh: 15200
+  };
+
+  function bracketTax(income, brackets) {
+    let tax = 0;
+    for (const [lo, hi, rate] of brackets) {
+      if (income <= lo) break;
+      tax += (Math.min(income, hi) - lo) * rate;
+    }
+    return Math.max(0, tax);
+  }
+
+  // ---- State ----
+  let currentPeriod = 'pay';
+  let results = null;
+
+  function setPeriod(p) {
+    currentPeriod = p;
+    document.querySelectorAll('.period-tabs button').forEach((b, i) => {
+      b.classList.toggle('active', ['pay','month','year'][i] === p);
+    });
+    if (results) updateHero();
+  }
+
+  function updateHero() {
+    const r = results;
+    let amount, label;
+    if (currentPeriod === 'pay') { amount = r.takeHomePer; label = 'per ' + r.payLabel; }
+    else if (currentPeriod === 'month') { amount = r.takeHomeAnnual / 12; label = 'per month'; }
+    else { amount = r.takeHomeAnnual; label = 'per year'; }
+    document.getElementById('hero-amount').textContent = fmt(amount);
+    document.getElementById('hero-period').textContent = label;
+  }
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function pct(n) { return (n * 100).toFixed(1) + '%'; }
+
+  function calculate() {
+    const salary = parseFloat(document.getElementById('salary').value) || 0;
+    if (!salary) { alert('Please enter your annual gross salary.'); return; }
+
+    const filing = document.getElementById('filing').value;
+    const freqN = parseInt(document.getElementById('pay-freq').value);
+    const payLabelMap = { 52:'week', 26:'two weeks', 24:'half-month', 12:'month', 1:'year' };
+    const allowances = parseInt(document.getElementById('allowances').value) || 0;
+    const age65 = document.getElementById('age65').checked;
+    const selfEmp = document.getElementById('self-employed').checked;
+
+    // Pre-tax deductions
+    const retType = document.getElementById('retirement-type').value;
+    let retRaw = parseFloat(document.getElementById('retirement').value) || 0;
+    let retirement401k = retType === 'pct' ? salary * (retRaw / 100) : retRaw;
+    retirement401k = Math.min(retirement401k, age65 ? 30500 : 23000);
+    const hsa = Math.min(parseFloat(document.getElementById('hsa').value) || 0, 8300);
+    const otherPretax = parseFloat(document.getElementById('other-pretax').value) || 0;
+    const totalPretax = retirement401k + hsa + otherPretax;
+
+    // FICA
+    const ficaSocialSecurity = Math.min(salary, 168600) * (selfEmp ? 0.124 : 0.062);
+    const ficaMedicare = salary * (selfEmp ? 0.029 : 0.0145);
+    const extraMedicare = Math.max(0, salary - (filing === 'mfj' ? 250000 : 200000)) * 0.009;
+    const totalFica = ficaSocialSecurity + ficaMedicare + extraMedicare;
+
+    // Half of SE tax deduction
+    const seTaxDeduction = selfEmp ? (ficaSocialSecurity + ficaMedicare) * 0.5 : 0;
+
+    // Federal AGI
+    const federalAGI = Math.max(0, salary - totalPretax - seTaxDeduction);
+
+    // Federal taxable income
+    let stdDed = STANDARD_DEDUCTION[filing];
+    if (age65) stdDed += EXTRA_DEDUCTION_65[filing];
+    const allowanceDed = allowances * 4300;
+    const federalTaxable = Math.max(0, federalAGI - stdDed - allowanceDed);
+
+    // Federal income tax
+    const federalTax = bracketTax(federalTaxable, FEDERAL_BRACKETS[filing]);
+
+    // Wisconsin AGI (uses same pretax deductions)
+    const wiAGI = Math.max(0, salary - totalPretax - seTaxDeduction);
+    const wiStdDed = WI_STD_DEDUCTION[filing] || WI_STD_DEDUCTION.single;
+    const wiTaxable = Math.max(0, wiAGI - wiStdDed);
+    const wiTax = bracketTax(wiTaxable, WI_BRACKETS[filing] || WI_BRACKETS.single);
+
+    // Totals
+    const totalDeductions = federalTax + wiTax + totalFica + totalPretax;
+    const takeHomeAnnual = salary - totalDeductions;
+    const takeHomePer = takeHomeAnnual / freqN;
+
+    results = {
+      salary, filing, freqN, payLabel: payLabelMap[freqN],
+      retirement401k, hsa, otherPretax, totalPretax,
+      ficaSocialSecurity, ficaMedicare, extraMedicare, totalFica,
+      federalTax, wiTax,
+      totalDeductions, takeHomeAnnual, takeHomePer,
+      federalTaxable, wiTaxable, stdDed, wiStdDed, seTaxDeduction,
+      selfEmp
+    };
+
+    renderResults();
+  }
+
+  function renderResults() {
+    const r = results;
+    document.getElementById('empty-card').style.display = 'none';
+    const panel = document.getElementById('results-panel');
+    panel.classList.add('visible');
+
+    updateHero();
+
+    // Effective tax rate label
+    const effRate = r.totalDeductions / r.salary;
+    document.getElementById('eff-rate-label').textContent = 'Effective tax rate: ' + pct(effRate);
+
+    // Stacked bar
+    const colors = [
+      { label: 'Federal tax', val: r.federalTax, color: '#7c3aed' },
+      { label: 'Wisconsin tax', val: r.wiTax, color: '#0f5f6e' },
+      { label: 'Social Security', val: r.ficaSocialSecurity, color: '#d97706' },
+      { label: 'Medicare', val: r.ficaMedicare + r.extraMedicare, color: '#dc2626' },
+      { label: 'Pre-tax deds.', val: r.totalPretax, color: '#059669' },
+      { label: 'Take-home', val: r.takeHomeAnnual, color: '#1d4f2e' },
+    ];
+    const bar = document.getElementById('stacked-bar');
+    const legend = document.getElementById('stacked-legend');
+    bar.innerHTML = '';
+    legend.innerHTML = '';
+    colors.forEach(c => {
+      if (c.val <= 0) return;
+      const w = (c.val / r.salary * 100).toFixed(2);
+      const seg = document.createElement('div');
+      seg.className = 'stacked-seg';
+      seg.style.width = w + '%';
+      seg.style.background = c.color;
+      bar.appendChild(seg);
+
+      const ld = document.createElement('div');
+      ld.className = 'legend-dot';
+      ld.innerHTML = `<span style="background:${c.color}"></span>${c.label} (${(+w).toFixed(1)}%)`;
+      legend.appendChild(ld);
+    });
+
+    // Breakdown list
+    const list = document.getElementById('breakdown-list');
+    function row(label, val, cls = '') {
+      return `<li><span class="item-label">${label}</span><span class="item-val ${cls}">${val}</span></li>`;
+    }
+    function srow(label) {
+      return `<li class="section-row"><span class="item-label section-head">${label}</span></li>`;
+    }
+
+    let html = '';
+    html += row('Gross salary', fmt(r.salary));
+    if (r.totalPretax > 0) {
+      html += srow('Pre-Tax Deductions');
+      if (r.retirement401k > 0) html += row('401(k) / 403(b)', '-' + fmt(r.retirement401k), 'deduction');
+      if (r.hsa > 0) html += row('HSA', '-' + fmt(r.hsa), 'deduction');
+      if (r.otherPretax > 0) html += row('Other pre-tax', '-' + fmt(r.otherPretax), 'deduction');
+    }
+    if (r.seTaxDeduction > 0) html += row('SE tax deduction (½)', '-' + fmt(r.seTaxDeduction), 'deduction');
+
+    html += srow('Federal Income Tax');
+    html += row('Standard deduction', '-' + fmt(r.stdDed));
+    html += row('Federal taxable income', fmt(r.federalTaxable));
+    html += row('Federal income tax', '-' + fmt(r.federalTax), 'deduction');
+
+    html += srow('Wisconsin State Tax');
+    html += row('WI standard deduction', '-' + fmt(r.wiStdDed));
+    html += row('WI taxable income', fmt(r.wiTaxable));
+    html += row('Wisconsin income tax', '-' + fmt(r.wiTax), 'deduction');
+
+    html += srow('FICA');
+    html += row('Social Security (6.2%' + (r.selfEmp ? ' ×2' : '') + ')', '-' + fmt(r.ficaSocialSecurity), 'deduction');
+    html += row('Medicare (1.45%' + (r.selfEmp ? ' ×2' : '') + ')', '-' + fmt(r.ficaMedicare), 'deduction');
+    if (r.extraMedicare > 0) html += row('Additional Medicare (0.9%)', '-' + fmt(r.extraMedicare), 'deduction');
+
+    html += srow('Summary');
+    html += row('Total deductions', '-' + fmt(r.totalDeductions), 'deduction');
+    html += row('<strong>Annual take-home</strong>', fmt(r.takeHomeAnnual), 'total');
+
+    list.innerHTML = html;
+  }
+
+  // Update retirement prefix symbol
+  document.getElementById('retirement-type').addEventListener('change', function() {
+    document.getElementById('ret-prefix').textContent = this.value === 'pct' ? '%' : '$';
+  });
+
+  // Allow Enter key to calculate
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+</script>
+</body>
+</html>
