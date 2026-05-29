@@ -16,9 +16,9 @@ Probability that the U.S. Economy was in Recession in April 2026: **0.4%**
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_4_30_26.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_5_28_26.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_4_30_26.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_5_28_26.xlsx %})
 
 [FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
