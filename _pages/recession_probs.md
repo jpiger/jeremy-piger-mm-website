@@ -9,9 +9,9 @@ comments: true
 
 <HR>
 
-<b>Release Date: April 30, 2026</b>
+<b>Release Date: May 28, 2026</b>
 
-Probability that the U.S. Economy was in Recession in March 2026: **1.8%**
+Probability that the U.S. Economy was in Recession in April 2026: **0.4%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
