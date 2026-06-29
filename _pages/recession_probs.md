@@ -9,16 +9,16 @@ comments: true
 
 <HR>
 
-<b>Release Date: May 28, 2026</b>
+<b>Release Date: June 29, 2026</b>
 
-Probability that the U.S. Economy was in Recession in April 2026: **0.4%**
+Probability that the U.S. Economy was in Recession in May 2026: **0.5%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
 
-[Graph]({% link /assets/files/us_historical_probs_5_28_26.pdf %})
+[Graph]({% link /assets/files/us_historical_probs_6_29_26.pdf %})
 
-[Excel File]({% link /assets/files/us_historical_probs_5_28_26.xlsx %})
+[Excel File]({% link /assets/files/us_historical_probs_6_29_26.xlsx %})
 
 [FRED Database](https://fred.stlouisfed.org/series/RECPROUSM156N)
 
