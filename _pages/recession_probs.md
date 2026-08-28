@@ -9,9 +9,9 @@ comments: true
 
 <HR>
 
-<b>Release Date: July 30, 2026</b>
+<b>Release Date: August 26, 2026</b>
 
-Probability that the U.S. Economy was in Recession in June 2026: **0.8%**
+Probability that the U.S. Economy was in Recession in July 2026: **0.8%**
 
 
 For a time series of smoothed recession probabilities back to June 1967, select one of the following: 
