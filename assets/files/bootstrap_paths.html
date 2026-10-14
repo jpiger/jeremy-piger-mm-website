@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Sample Paths</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one lecture-screen column — heading, one control row, a wide chart, a short method note. */
+:root {
+  --bg: #fbfbfa;
+  --surface: #ffffff;
+  --ink: #141414;
+  --ink-2: #4f4e4a;
+  --ink-3: #82817b;
+  --rule: #e4e3df;
+  --grid: #efeeea;
+  --accent: #2a78d6;
+  --band-95: rgba(42, 120, 214, 0.16);
+  --band-80: rgba(42, 120, 214, 0.32);
+  --actual: #141414;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+  --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161615; --surface: #1d1d1c; --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #8f8e86;
+    --rule: #34332f; --grid: #2a2a27; --accent: #3987e5;
+    --band-95: rgba(57, 135, 229, 0.20); --band-80: rgba(57, 135, 229, 0.38); --actual: #f0efec;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+    --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161615; --surface: #1d1d1c; --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #8f8e86;
+  --rule: #34332f; --grid: #2a2a27; --accent: #3987e5;
+  --band-95: rgba(57, 135, 229, 0.20); --band-80: rgba(57, 135, 229, 0.38); --actual: #f0efec;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+  --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.5;
+  padding: 24px 24px 32px; margin: 0;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+header { display: flex; flex-direction: column; gap: 4px; }
+.eyebrow { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+h1 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 600; margin: 0; text-wrap: balance; line-height: 1.15; }
+.sub { color: var(--ink-2); margin: 0; max-width: 70ch; }
+
+.controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px;
+  padding: 14px 18px; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+}
+.ctl { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ctl label, .ctl .lbl { font-size: 14px; color: var(--ink-2); font-weight: 500; white-space: nowrap; }
+.count { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 22px; font-weight: 500; min-width: 3.2em; text-align: right; }
+input[type="range"] { width: clamp(160px, 22vw, 280px); accent-color: var(--accent); }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.seg button {
+  font: inherit; font-size: 15px; padding: 6px 12px; border: 0; background: transparent; color: var(--ink-2); cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+.seg button + button { border-left: 1px solid var(--rule); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.seg button:disabled { opacity: 0.45; cursor: not-allowed; }
+.check { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--ink-2); cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--accent); }
+.check.disabled { opacity: 0.5; cursor: not-allowed; }
+.go {
+  margin-left: auto; font: inherit; font-weight: 600; font-size: 16px;
+  padding: 10px 18px; border-radius: 8px; border: 0; background: var(--accent); color: #fff; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.go:hover { filter: brightness(1.08); }
+.go kbd { font-family: var(--font-mono); font-size: 12px; padding: 1px 6px; border-radius: 4px; background: rgba(255,255,255,0.22); }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.chart-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 14px 8px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 14px; color: var(--ink-2); padding: 0 6px 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.sw-line { width: 22px; height: 0; border-top: 2px solid var(--actual); }
+.sw-dash { width: 22px; height: 0; border-top: 2px dashed var(--ink-2); }
+.sw-paths { width: 22px; height: 10px; background: linear-gradient(90deg, var(--s1), var(--s2), var(--s3), var(--s4), var(--s5)); border-radius: 2px; }
+.sw-b80 { width: 22px; height: 10px; background: var(--band-80); border-radius: 2px; }
+.sw-b95 { width: 22px; height: 10px; background: var(--band-95); border-radius: 2px; }
+.plot { position: relative; width: 100%; height: clamp(300px, 52vh, 560px); }
+canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.tip {
+  position: absolute; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--rule);
+  border-radius: 8px; padding: 8px 10px; font-size: 13px; line-height: 1.45; box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  font-variant-numeric: tabular-nums; min-width: 170px;
+}
+.tip b { font-weight: 600; }
+.tip .k { color: var(--ink-2); }
+
+.readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.stat { padding: 10px 14px; border-left: 3px solid var(--rule); min-width: 0; }
+.stat .k { font-size: 13px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; }
+.stat .v { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 20px; }
+
+.note { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; color: var(--ink-2); font-size: 15px; }
+.note h2 { font-size: 15px; color: var(--ink); margin: 0 0 6px; font-weight: 600; }
+.note ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; }
+.note p { margin: 0; }
+.mono { font-family: var(--font-mono); font-size: 0.92em; }
+@media (max-width: 720px) {
+  body { padding: 16px 16px 24px; font-size: 16px; }
+  .note { grid-template-columns: minmax(0, 1fr); }
+  .go { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">EC 422/522 · Lecture 6 · Bootstrapped density forecasts</div>
+    <h1>Seasonal random walk: bootstrapped sample paths</h1>
+    <p class="sub">Victoria (AU) café, restaurant and takeaway turnover, $ million per month. Each path adds residuals drawn at random from the training sample to the seasonal random walk.</p>
+  </header>
+
+  <div class="controls" role="group" aria-label="Simulation controls">
+    <div class="ctl">
+      <label for="npaths">Paths</label>
+      <input id="npaths" type="range" min="0" max="9" step="1" value="2" aria-describedby="npaths-val">
+      <output id="npaths-val" class="count" for="npaths">5</output>
+    </div>
+    <div class="ctl">
+      <span class="lbl" id="h-lbl">Horizon</span>
+      <div class="seg" id="hseg" role="group" aria-labelledby="h-lbl">
+        <button type="button" data-h="1" aria-pressed="false">1 mo</button>
+        <button type="button" data-h="6" aria-pressed="true">6 mo</button>
+        <button type="button" data-h="12" aria-pressed="false">12 mo</button>
+        <button type="button" data-h="24" aria-pressed="false">24 mo</button>
+      </div>
+    </div>
+    <div class="ctl">
+      <span class="lbl" id="v-lbl">Show</span>
+      <div class="seg" id="vseg" role="group" aria-labelledby="v-lbl">
+        <button type="button" data-view="paths" aria-pressed="true">Simulated paths</button>
+        <button type="button" data-view="intervals" aria-pressed="false" id="v-int">Interval forecast</button>
+      </div>
+    </div>
+    <button type="button" class="go" id="go">Simulate new paths <kbd>N</kbd></button>
+  </div>
+
+  <div class="chart-card">
+    <div class="legend" aria-hidden="true">
+      <span><i class="sw-line"></i>Actual</span>
+      <span><i class="sw-dash"></i>Point forecast</span>
+      <span id="lg-paths"><i class="sw-paths"></i>Simulated paths</span>
+      <span id="lg-bands" hidden><i class="sw-b80"></i>80% interval <i class="sw-b95"></i>95% interval (percentiles of the simulated paths)</span>
+    </div>
+    <div class="plot" id="plot">
+      <canvas id="cv" role="img" aria-label="Line chart of turnover with simulated future paths"></canvas>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+  </div>
+
+  <div class="readout" id="readout" aria-live="polite"></div>
+
+  <div class="note">
+    <div>
+      <h2>How each path is built</h2>
+      <ol>
+        <li>Draw a residual at random, with replacement, from the training-sample residuals <span class="mono">e<sub>t</sub> = y<sub>t</sub> − y<sub>t−12</sub></span> (demeaned).</li>
+        <li>Add it to the seasonal random walk forecast to simulate <span class="mono">y<sub>T+1</sub></span>.</li>
+        <li>For horizons beyond one month, feed simulated values back in and repeat out to the horizon. Months more than a year out build on the simulated value from 12 months earlier.</li>
+      </ol>
+    </div>
+    <div>
+      <h2>What to look for</h2>
+      <p>At a 1-month horizon each simulation is a single possible value for next month. At longer horizons, a few paths show what single possible futures look like. As the number of paths grows, they fill in the forecast distribution. Switch to <b>Interval forecast</b> to replace the paths with their percentiles: the 10th and 90th give the 80% interval, and the 2.5th and 97.5th give the 95% interval. This matches <span class="mono">generate(bootstrap = TRUE)</span> and <span class="mono">forecast(bootstrap = TRUE)</span> in fable. Data: <span class="mono">aus_retail</span> (fpp3), April 1982 to December 2018.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const DATA = {"start":"1982-04","y":[85.1,85.1,82.8,82.1,81.8,84.6,91.7,97.7,109.3,94.6,88.2,92,85.2,86.8,81.3,85.6,90.5,90.8,92.7,95.8,111.7,92.7,94.4,97.8,92.9,101,92.1,92.5,94.4,90.4,95.7,100.6,112.4,96.3,93.9,98,98.4,101.8,90.8,98.3,107,103.2,111.8,112.3,126.8,113.8,104.4,109.7,110.2,118,108.2,123.5,131.7,132.9,142.8,138.3,159.5,138.9,130.9,136.3,142.7,144.2,137.9,149,146.4,146.4,157.3,155.3,186.5,143.3,146.7,159.6,158.7,151.7,155.7,154,159.9,165.3,167.8,176.4,186.2,167.2,167.9,180.6,179.4,182.9,177.5,183.3,177.4,188.3,203,203.6,236.8,198.3,183.5,204.6,183.9,183.5,182.1,193.4,186.7,182.9,185.2,183.1,209.1,187.8,166.9,174.1,169.5,177.7,179,179,181.2,183.2,183.9,189,227.5,192.3,184.5,197.9,195.6,193.9,169.3,177.9,173.4,190.6,192.4,195.4,234,207.4,182.1,191.1,189.8,192.1,185.7,200.2,192.4,195.1,192.5,202.3,235.9,194.1,185.3,194.6,181.8,179.9,180,194.6,193.7,206,225.1,219.9,246.3,222.3,207.2,238.1,229,222.4,221.5,225.4,227.4,233.4,230.2,240.4,259.4,239.1,219,238.4,236.4,235.6,225.8,229.9,228.8,219.2,225.5,233.3,254.6,242.1,216.1,249.9,250.8,252.7,235.8,237.5,237.8,235,243.4,238.5,264.3,241.5,218,245.4,235.8,240.2,226.9,248.4,255.5,248,268,260.5,284.2,267.7,248.6,283.3,285.6,299.1,295.2,321.5,331.3,340.2,345.6,352.3,392.1,331.1,295.7,337.2,283.7,308.9,306.3,301.3,307.6,296.9,326.2,324.8,359.9,336.3,311.7,358.4,367,354.4,347.5,371.3,391.5,349.1,361.9,366.2,409.1,385.2,356,399.2,372.7,368.8,355.6,414.5,410,392.5,377.5,393.1,441.2,446.4,378.4,418.4,406.2,426.2,399.1,449,437.6,434.9,479.9,473.8,529.9,478.1,457,499.3,471.8,468.5,438.1,468.4,468.4,490.9,473.9,463,509.6,432,408.1,436.7,439.4,430.9,427.2,451.1,448.6,441.9,474.4,474.2,506.6,468.2,433.3,503.8,501.8,522.5,495.4,507.1,520.6,513.5,504.3,528.6,584.8,523.9,481.2,545.1,531.1,510.3,490.1,497.6,526.4,494.6,540.9,547.9,596.3,539.6,523.1,550.6,541.1,548.6,516.2,541.8,557.8,537.3,591.2,584,673.1,647.8,576,634.5,622.2,631.6,594.2,613.4,642.4,615.6,636.5,654.1,742,657.9,611.4,704.2,697.6,692,669.7,724.2,748.9,735.8,705,693.9,806.9,649.4,597.8,689.6,707.6,699.1,672.5,694,694.7,686.9,682.1,681.5,761.4,638.4,594.5,679.6,632.5,666.8,661.9,676.4,681.5,662.4,684.9,707,750.8,655.5,605.2,683.2,682.8,682,651.6,656.7,664.9,665.7,686,707.5,792.2,721.2,631.6,725.5,722.1,718.8,693.6,753.8,784.4,791.9,789.5,778.2,838.1,786.6,689.1,753.4,737.5,740.3,726.1,780.8,795,795.8,811.7,832.6,896.7,790.8,732.4,793.3,805.4,808.9,769,828.7,866.3,878.3,886.3,879.5,961.8,861.4,753.6,868.4,859.7,845.2,828.7,857.6,874.1,872.4,917.7,925.7,1008.1,887.3,810.6,909.7,898.6,866.4,873.1,916.1,943.8,933.8,960,981.8,1066.2]};
+  const LAG = 12;
+  const STOPS = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000];
+  const HIST = 3; // months of history shown
+  const MIN_FOR_BANDS = 20;
+
+  const y = DATA.y, T = y.length;
+  const [sy, sm] = DATA.start.split("-").map(Number);
+  const monthLabel = (i) => { const m = sm - 1 + i; const yr = sy + Math.floor(m / 12); return new Date(yr, ((m % 12) + 12) % 12, 1); };
+  const fmtMonth = (i) => monthLabel(i).toLocaleString("en-US", { month: "short", year: "numeric" });
+
+  // Seasonal-naive residuals, demeaned as fable does
+  const res = [];
+  for (let t = LAG; t < T; t++) res.push(y[t] - y[t - LAG]);
+  const rmean = res.reduce((a, b) => a + b, 0) / res.length;
+  for (let i = 0; i < res.length; i++) res[i] -= rmean;
+
+  const state = { n: 5, h: 6, view: "paths", paths: [], scale: null };
+
+  function drawPaths(n) {
+    const paths = new Array(n);
+    for (let p = 0; p < n; p++) {
+      const path = new Float64Array(state.h);
+      for (let k = 0; k < state.h; k++) {
+        const base = k < LAG ? y[T - LAG + k] : path[k - LAG];
+        path[k] = base + res[Math.floor(Math.random() * res.length)];
+      }
+      paths[p] = path;
+    }
+    return paths;
+  }
+  function simulate() { state.paths = drawPaths(state.n); }
+
+  // Axis range from a large reference simulation (0.5th to 99.5th percentile at
+  // each horizon) plus the history shown. Recomputed only when the horizon changes.
+  function setScale() {
+    const ref = drawPaths(4000);
+    let lo = Infinity, hi = -Infinity;
+    for (let i = T - HIST; i < T; i++) { lo = Math.min(lo, y[i]); hi = Math.max(hi, y[i]); }
+    for (let k = 0; k < state.h; k++) {
+      const v = ref.map((p) => p[k]).sort((a, b) => a - b);
+      lo = Math.min(lo, quantile(v, 0.005)); hi = Math.max(hi, quantile(v, 0.995));
+    }
+    const pad = (hi - lo) * 0.06;
+    state.scale = { lo: lo - pad, hi: hi + pad };
+  }
+  const pointFc = (k) => y[T - LAG + (k % LAG)];
+
+  function quantile(sorted, q) {
+    const pos = (sorted.length - 1) * q, lo = Math.floor(pos), hi = Math.ceil(pos);
+    return sorted[lo] + (sorted[hi] - sorted[lo]) * (pos - lo);
+  }
+  function stats() {
+    const out = [];
+    for (let k = 0; k < state.h; k++) {
+      const v = state.paths.map((p) => p[k]).sort((a, b) => a - b);
+      out.push({ q025: quantile(v, 0.025), q10: quantile(v, 0.10), q50: quantile(v, 0.5), q90: quantile(v, 0.90), q975: quantile(v, 0.975), mean: v.reduce((a, b) => a + b, 0) / v.length });
+    }
+    return out;
+  }
+
+  // ---- drawing
+  const cv = document.getElementById("cv"), ctx = cv.getContext("2d");
+  const plot = document.getElementById("plot"), tip = document.getElementById("tip");
+  let geom = null, cache = null;
+  const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+  function niceTicks(lo, hi, count) {
+    const span = hi - lo, step0 = span / count, mag = Math.pow(10, Math.floor(Math.log10(step0)));
+    const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => span / s <= count) || 10 * mag;
+    const ticks = []; for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) ticks.push(v);
+    return ticks;
+  }
+
+  function draw() {
+    const dpr = window.devicePixelRatio || 1, W = plot.clientWidth, H = plot.clientHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+
+    const narrow = W < 560;
+    const m = { l: narrow ? 50 : 64, r: 52, t: 10, b: 38 };
+    const i0 = T - HIST, i1 = T - 1 + state.h; // index range on x
+    const showBands = state.view === "intervals" && state.n >= MIN_FOR_BANDS;
+    const st = state.n >= MIN_FOR_BANDS ? stats() : null;
+    cache = st;
+
+    // Fixed y-range for this horizon (set in setScale), so redraws never rescale the axis
+    const lo = state.scale.lo, hi = state.scale.hi;
+
+    const x0 = i0 - 0.5, x1 = i1 + 0.5;
+    const X = (i) => m.l + ((i - x0) / (x1 - x0)) * (W - m.l - m.r);
+    const Y = (v) => m.t + (1 - (v - lo) / (hi - lo)) * (H - m.t - m.b);
+    geom = { X, Y, i0, i1, m, W, H };
+
+    const ink2 = css("--ink-2"), ink3 = css("--ink-3"), grid = css("--grid"), rule = css("--rule");
+    ctx.font = `${narrow ? 12 : 13}px ${css("--font-body")}`;
+
+    // grid + y labels
+    const yt = niceTicks(lo, hi, narrow ? 4 : 6);
+    ctx.textAlign = "right"; ctx.textBaseline = "middle";
+    for (const v of yt) {
+      ctx.strokeStyle = grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(m.l, Y(v) + 0.5); ctx.lineTo(W - m.r, Y(v) + 0.5); ctx.stroke();
+      ctx.fillStyle = ink3; ctx.fillText(v.toLocaleString("en-US"), m.l - 8, Y(v));
+    }
+    // x labels: every January (and every 6 months if short)
+    ctx.textAlign = "center"; ctx.textBaseline = "top";
+    const span = i1 - i0, every = span <= 12 ? 1 : span <= 20 ? 2 : 3;
+    for (let i = i0; i <= i1; i++) {
+      const d = monthLabel(i);
+      if ((i - i0) % every === 0) {
+        ctx.strokeStyle = rule; ctx.beginPath(); ctx.moveTo(X(i) + 0.5, H - m.b); ctx.lineTo(X(i) + 0.5, H - m.b + 5); ctx.stroke();
+        ctx.fillStyle = ink3; ctx.fillText(d.toLocaleString("en-US", { month: "short", year: "numeric" }), X(i), H - m.b + 8);
+      }
+    }
+    // forecast origin marker
+    ctx.strokeStyle = rule; ctx.setLineDash([2, 4]); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(X(T - 1) + 0.5, m.t); ctx.lineTo(X(T - 1) + 0.5, H - m.b); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = ink3; ctx.textAlign = "left"; ctx.textBaseline = "top";
+    ctx.fillText("Forecast origin", X(T - 1) + 6, m.t + 2);
+
+    // paths (clipped to the plot area)
+    ctx.save(); ctx.beginPath(); ctx.rect(m.l, m.t, W - m.l - m.r, H - m.t - m.b); ctx.clip();
+    const palette = ["--s1", "--s2", "--s3", "--s4", "--s5", "--s6", "--s7", "--s8"].map(css);
+    const few = state.n <= 8;
+    const alpha = few ? 1 : Math.max(0.03, Math.min(0.55, 5 / state.n));
+    ctx.lineJoin = "round"; ctx.lineCap = "round";
+    if (!showBands) state.paths.forEach((p, idx) => {
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = few ? palette[idx] : palette[0];
+      ctx.lineWidth = few ? 2 : 1.25;
+      ctx.beginPath(); ctx.moveTo(X(T - 1), Y(y[T - 1]));
+      for (let k = 0; k < p.length; k++) ctx.lineTo(X(T + k), Y(p[k]));
+      ctx.stroke();
+      if (state.h === 1) {
+        ctx.fillStyle = ctx.strokeStyle;
+        ctx.beginPath(); ctx.arc(X(T), Y(p[0]), few ? 5 : 3.5, 0, 2 * Math.PI); ctx.fill();
+      }
+    });
+    ctx.globalAlpha = 1;
+
+    // bands
+    const accent = css("--accent");
+    const bandLabels = [];
+    if (showBands && state.h === 1) {
+      // Interval whiskers at the single forecast month
+      const xc = X(T);
+      const whisker = (loK, hiK, w, cap) => {
+        ctx.strokeStyle = accent; ctx.lineWidth = w; ctx.lineCap = "butt";
+        ctx.beginPath(); ctx.moveTo(xc, Y(st[0][loK])); ctx.lineTo(xc, Y(st[0][hiK])); ctx.stroke();
+        ctx.lineWidth = 2;
+        for (const k of [loK, hiK]) { ctx.beginPath(); ctx.moveTo(xc - cap, Y(st[0][k])); ctx.lineTo(xc + cap, Y(st[0][k])); ctx.stroke(); }
+      };
+      ctx.globalAlpha = 0.5; whisker("q025", "q975", 2, 14); ctx.globalAlpha = 1;
+      whisker("q10", "q90", 8, 10);
+      bandLabels.push({ x: xc + 18, y: Y(st[0].q975), t: "95%" }, { x: xc + 18, y: Y(st[0].q90), t: "80%" });
+      bandLabels.push({ x: xc + 18, y: Y(st[0].q10), t: "80%" }, { x: xc + 18, y: Y(st[0].q025), t: "95%" });
+    } else if (showBands) {
+      const fill = (loK, hiK, color) => {
+        ctx.fillStyle = color; ctx.beginPath(); ctx.moveTo(X(T - 1), Y(y[T - 1]));
+        for (let k = 0; k < st.length; k++) ctx.lineTo(X(T + k), Y(st[k][hiK]));
+        for (let k = st.length - 1; k >= 0; k--) ctx.lineTo(X(T + k), Y(st[k][loK]));
+        ctx.closePath(); ctx.fill();
+      };
+      const edge = (key, w, dash) => {
+        ctx.strokeStyle = accent; ctx.lineWidth = w; ctx.setLineDash(dash);
+        ctx.beginPath(); ctx.moveTo(X(T - 1), Y(y[T - 1]));
+        for (let k = 0; k < st.length; k++) ctx.lineTo(X(T + k), Y(st[k][key]));
+        ctx.stroke(); ctx.setLineDash([]);
+      };
+      fill("q025", "q975", css("--band-95"));
+      fill("q10", "q90", css("--band-80"));
+      edge("q025", 1.5, [5, 4]); edge("q975", 1.5, [5, 4]);
+      edge("q10", 2.5, []); edge("q90", 2.5, []);
+      const kl = st.length - 1, xe = X(T + kl) + 8;
+      bandLabels.push({ x: xe, y: Y(st[kl].q975), t: "95%" }, { x: xe, y: Y(st[kl].q90), t: "80%" });
+      bandLabels.push({ x: xe, y: Y(st[kl].q10), t: "80%" }, { x: xe, y: Y(st[kl].q025), t: "95%" });
+    }
+
+    ctx.restore();
+
+    // direct labels on the interval edges (outside the clip so they can sit in the right margin)
+    if (bandLabels.length) {
+      ctx.font = `600 ${narrow ? 12 : 13}px ${css("--font-body")}`;
+      ctx.fillStyle = css("--ink"); ctx.textAlign = "left"; ctx.textBaseline = "middle";
+      // nudge apart labels that would overlap
+      const sorted = bandLabels.slice().sort((a, b) => a.y - b.y);
+      for (let j = 1; j < sorted.length; j++) if (sorted[j].y - sorted[j - 1].y < 15) sorted[j].y = sorted[j - 1].y + 15;
+      for (const l of sorted) ctx.fillText(l.t, l.x, l.y);
+      ctx.font = `${narrow ? 12 : 13}px ${css("--font-body")}`;
+    }
+
+    // point forecast
+    ctx.strokeStyle = ink2; ctx.lineWidth = 2; ctx.setLineDash([6, 5]);
+    ctx.beginPath(); ctx.moveTo(X(T - 1), Y(y[T - 1]));
+    for (let k = 0; k < state.h; k++) ctx.lineTo(X(T + k), Y(pointFc(k)));
+    ctx.stroke(); ctx.setLineDash([]);
+    if (state.h === 1) {
+      ctx.strokeStyle = ink2; ctx.lineWidth = 2; ctx.fillStyle = css("--surface");
+      ctx.beginPath(); ctx.arc(X(T), Y(pointFc(0)), 6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    }
+
+    // actual
+    ctx.strokeStyle = css("--actual"); ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let i = i0; i < T; i++) { i === i0 ? ctx.moveTo(X(i), Y(y[i])) : ctx.lineTo(X(i), Y(y[i])); }
+    ctx.stroke();
+    ctx.fillStyle = css("--actual");
+    for (let i = i0; i < T; i++) { ctx.beginPath(); ctx.arc(X(i), Y(y[i]), 3.5, 0, 2 * Math.PI); ctx.fill(); }
+
+    // y-axis title
+    ctx.save(); ctx.fillStyle = ink3; ctx.translate(14, m.t + (H - m.t - m.b) / 2); ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("Turnover ($ million)", 0, 0); ctx.restore();
+
+    if (hoverI !== null) drawHover();
+    renderReadout(st);
+  }
+
+  // ---- hover
+  let hoverI = null;
+  function drawHover() {
+    const { X, m, H } = geom;
+    ctx.strokeStyle = css("--ink-3"); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(X(hoverI) + 0.5, m.t); ctx.lineTo(X(hoverI) + 0.5, H - m.b); ctx.stroke();
+  }
+  plot.addEventListener("pointermove", (e) => {
+    if (!geom) return;
+    const r = plot.getBoundingClientRect(), x = e.clientX - r.left;
+    const { i0, i1, m, W } = geom;
+    let i = Math.round((i0 - 0.5) + ((x - m.l) / (W - m.l - m.r)) * (i1 - i0 + 1));
+    if (i < i0 || i > i1) { hoverI = null; tip.hidden = true; draw(); return; }
+    hoverI = i; draw();
+    const f1 = (v) => v.toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    let html = `<b>${fmtMonth(i)}</b><br>`;
+    if (i < T) html += `<span class="k">Actual</span> ${f1(y[i])}`;
+    else {
+      const k = i - T;
+      html += `<span class="k">h = ${k + 1} · Point forecast</span> ${f1(pointFc(k))}`;
+      if (cache) html += `<br><span class="k">80% (paths)</span> ${f1(cache[k].q10)} to ${f1(cache[k].q90)}<br><span class="k">95% (paths)</span> ${f1(cache[k].q025)} to ${f1(cache[k].q975)}`;
+      else if (state.n <= 8) html += state.paths.map((p, j) => `<br><span class="k">Path ${j + 1}</span> ${f1(p[k])}`).join("");
+    }
+    tip.innerHTML = html; tip.hidden = false;
+    const tx = geom.X(i), tw = tip.offsetWidth;
+    tip.style.left = (tx + 14 + tw > plot.clientWidth ? tx - tw - 14 : tx + 14) + "px";
+    tip.style.top = "12px";
+  });
+  plot.addEventListener("pointerleave", () => { hoverI = null; tip.hidden = true; draw(); });
+
+  // ---- readout
+  const readout = document.getElementById("readout");
+  function renderReadout(st) {
+    const k = state.h - 1, f1 = (v) => v.toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const when = fmtMonth(T + k);
+    let cells = `<div class="stat"><div class="k">Paths simulated</div><div class="v">${state.n.toLocaleString("en-US")}</div></div>`;
+    cells += `<div class="stat"><div class="k">Point forecast, ${when}</div><div class="v">${f1(pointFc(k))}</div></div>`;
+    if (st) {
+      cells += `<div class="stat"><div class="k">80% interval, ${when}</div><div class="v">${f1(st[k].q10)} – ${f1(st[k].q90)}</div></div>`;
+      cells += `<div class="stat"><div class="k">95% interval, ${when}</div><div class="v">${f1(st[k].q025)} – ${f1(st[k].q975)}</div></div>`;
+    } else {
+      cells += `<div class="stat"><div class="k">Intervals</div><div class="v" style="font-size:15px;font-family:var(--font-body)">Use ${MIN_FOR_BANDS}+ paths to compute percentiles</div></div>`;
+    }
+    readout.innerHTML = cells;
+  }
+
+  // ---- controls
+  const slider = document.getElementById("npaths"), out = document.getElementById("npaths-val");
+  const vInt = document.getElementById("v-int");
+  const lgBands = document.getElementById("lg-bands"), lgPaths = document.getElementById("lg-paths");
+  function setView(v) {
+    state.view = v;
+    document.querySelectorAll("#vseg button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.view === v)));
+  }
+  function syncBands() {
+    const ok = state.n >= MIN_FOR_BANDS;
+    vInt.disabled = !ok;
+    vInt.title = ok ? "" : `Needs at least ${MIN_FOR_BANDS} paths`;
+    if (!ok && state.view === "intervals") setView("paths");
+    const showing = state.view === "intervals" && ok;
+    lgBands.hidden = !showing; lgPaths.hidden = showing;
+  }
+  slider.addEventListener("input", () => {
+    state.n = STOPS[+slider.value]; out.textContent = state.n.toLocaleString("en-US");
+    simulate(); syncBands(); draw();
+  });
+  document.querySelectorAll("#hseg button").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll("#hseg button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    state.h = +b.dataset.h; setScale(); simulate(); draw();
+  }));
+  document.querySelectorAll("#vseg button").forEach((b) => b.addEventListener("click", () => {
+    if (b.disabled) return; setView(b.dataset.view); syncBands(); draw();
+  }));
+  document.getElementById("go").addEventListener("click", () => { simulate(); draw(); });
+  document.addEventListener("keydown", (e) => {
+    if ((e.key === "n" || e.key === "N") && !e.metaKey && !e.ctrlKey && !e.altKey) { simulate(); draw(); }
+  });
+  window.addEventListener("resize", draw);
+  if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", draw);
+  new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+  setScale(); simulate(); syncBands(); draw();
+})();
+</script>
+</body>
+</html>
